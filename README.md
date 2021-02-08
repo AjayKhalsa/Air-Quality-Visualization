@@ -1,2 +1,2 @@
-# Air Quality Visusization for Deepblue Competition
+# Air Quality Visualization for Deepblue Competition
  
