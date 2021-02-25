@@ -13,8 +13,79 @@ async function getData() {
   const response = await fetch('/api');
   const data = await response.json();
 
+var iconcolor;
+var greenIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+ // shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  //shadowSize: [41, 41]
+});
+
+var redIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
+  //shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  //shadowSize: [41, 41]
+});
+
+var yellowIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+  //shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  //shadowSize: [41, 41]
+});
+
+var orangeIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-orange.png',
+  //shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  //shadowSize: [41, 41]
+});
+
+var violetIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-violet.png',
+  //shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  //shadowSize: [41, 41]
+});
+
+var blackIcon = new L.Icon({
+  iconUrl: 'https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-black.png',
+  //shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+  iconSize: [25, 41],
+  iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  //shadowSize: [41, 41]
+});
+
+
+  
   for (item of data) {
-    const marker = L.marker([item.lat, item.lon]).addTo(mymap);
+    if (item.air.aqi >= 301)
+      iconcolor = blackIcon
+    else if (item.air.aqi >= 201 & item.air.aqi <= 300)
+      iconcolor = violetIcon;
+    else if (item.air.aqi >= 151 & item.air.aqi <= 200)
+      iconcolor = redIcon;
+    else if (item.air.aqi >= 101 & item.air.aqi <= 150)
+      iconcolor = orangeIcon;
+    else if (item.air.aqi >= 51 & item.air.aqi <= 100)
+      iconcolor = yellowIcon;
+    else if (item.air.aqi <= 50)
+          iconcolor = greenIcon;
+
+    // const marker = L.marker([item.lat, item.lon]).addTo(mymap);
+    const marker = L.marker([item.lat, item.lon], {icon:iconcolor}).addTo(mymap);
     let txt = `LAT: &nbsp${item.lat}  <br>
     LON: &nbsp${item.lon}  <br>
     AQI: &nbsp${item.air.aqi}  <br>

@@ -1,6 +1,5 @@
 
 
-
 /* Please ❤ this if you like it! */
 
 
@@ -575,105 +574,8 @@ body.dark .logo img {
   filter: brightness(100%);
 }
 
-.table-heading {
-	color: #009879;
-	text-align: center;
-	box-shadow: teal;
-	margin-top: 70px;
-}
-
-.styled-table {
-    border-collapse: collapse;
-    margin: 25px 0;
-    font-size: 0.9em;
-    font-family: sans-serif;
-    min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-}
-
-.styled-table thead tr {
-	background-color: #D3D3D3;
-    /* background-color: #999; */
-    color: black;
-    text-align: left;
-}
-
-.styled-table th,
-.styled-table td {
-    padding: 12px 15px;
-}
-
-.styled-table tbody tr {
-    border-bottom: 1px solid #dddddd;
-}
-
-.styled-table tbody tr:nth-of-type(even) {
-    background-color: #f3f3f3;
-}
-
-.styled-table tbody tr:last-of-type {
-    border-bottom: 2px solid #009879;
-}
-
-.styled-table tbody tr.active-row-green {
-    font-weight: bold;
-    background-color: #9ACD32;
-}
-
-.styled-table tbody tr.active-row-yellow {
-    font-weight: bold;
-    background-color: #FFFF00;
-}
-
-.styled-table tbody tr.active-row-orange {
-    font-weight: bold;
-    background-color: #FFA500;
-}
-
-.styled-table tbody tr.active-row-red {
-    font-weight: bold;
-    background-color: #FF0000;
-	color: whitesmoke;
-}
-
-.styled-table tbody tr.active-row-purple {
-    font-weight: bold;
-    background-color: #800080;
-	color: white;
-}
-
-.styled-table tbody tr.active-row-black {
-    font-weight: bold;
-    background-color: #000000;
-	color: whitesmoke;
-}
-
-.pollutants-content p {
-	text-align: left;
-}
-
-.pollutants-content li {
-	text-align: left;
-}
-
-
-
-
-
-
-
-
-
-
 
 /* About Us */
-
-.company-sections .container {
-	position: relative;
-	left: 80px;
-}
-
-
 .separator-type, .title-type, .intro-type, .content-type .intro-type p {
     position: relative;
 }
@@ -683,17 +585,10 @@ body.dark .logo img {
 #product-header-section, .intro-type .container {
     padding: 68px 15px 72px !important;
 }
-/* @media (min-width: 1630px)  */
-
-.culture-section .container  {
-	margin-left: 200px;
-	/* position: relative;
-	left: 80px; */
-}
+@media (min-width: 1630px)
 
 .container {
-	width: 1630px;
-	padding-left: 200px;
+    width: 1630px;
 }
 .parallax {
     background-attachment: inherit !important;
@@ -725,7 +620,7 @@ body.dark .logo img {
 .company-sections h2, .careers-sections h2, .perks-section h2 {
     font-weight: 800;
 	font-size: 50px;
-	/* padding-left: 100px; */
+	padding-left: 100px;
 }
 .company-sections h2, .company-sections h3, .careers-sections h2, .perks-section h2 {
     font-family: 'proxima-nova', sans-serif;
@@ -737,20 +632,18 @@ body.dark .logo img {
     font-family: 'proxima-nova', sans-serif;
 	text-transform: capitalize;
 	text-align: center;
-	padding-left: 0px;
+	padding-left: 100px;
 }
 .red-border {
     width: 50%;
     border-bottom: 1px solid #d2282e;
-    margin: 0px 450px;
+    margin: 0 350px;
 	height: 16px;
-	/* align-items: center; */
+	align-items: center;
 }
-.company-sections p, .company-sections .container {
+.company-sections p {
 	margin-top: 20px;
 	text-align: center;
-	/* position: relative;
-	left: 80px; */
 }
 .ct-u-size22 {
 	font-size: 22px;
@@ -765,14 +658,12 @@ body.dark .logo img {
 	/* text-align: center; */
 	margin: 0, 10px;
 	padding-left: 450px;
-} 
+}
 .ct-u-paddingBoth100 {
     padding: 100px 15px;
 }
 .culture-section {
-	background: linear-gradient(rgba(0, 0, 0, 0.45),rgba(0, 0, 0, 0.45)), url(https://www.solodev.com/assets/culture.jpg) top no-repeat;
-	margin-top: 600px;
-	position: relative;
+    background: linear-gradient(rgba(0, 0, 0, 0.45),rgba(0, 0, 0, 0.45)), url(https://www.solodev.com/assets/culture.jpg) top no-repeat;
     /* background-color: #095c87; */
     /* color: #fff; */
 }
@@ -934,4 +825,4 @@ section.clients-home .clients-logos .client-logos-repeater img {
 .culture-section {
   background-size: cover;
   color: #fff;
-} 
+}

@@ -16,7 +16,12 @@
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
-        #mymap {position: absolute;top:80px;bottom: 0;left: 0;right: 400px;}
+      #checkinMap { height: 180px;
+      margin:8px 0px; }
+      #map {
+          height: 400px;
+      }
+            #mymap {position: absolute;top:80px;bottom: 0;left: 0;right: 400px;}
         </style>
          <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
          <script
@@ -33,7 +38,7 @@
 			<div class="row">
 				<div class="col-12">
 					<nav class="navbar navbar-expand-md navbar-light">
-                        				
+                        					
 						<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 							<span class="navbar-toggler-icon"></span>
 						</button>
@@ -96,11 +101,12 @@
     <div class="right"> 
         <!-- <form> -->
         <div class="form-group">
-          <label for="exampleInputEmail1">Enter Postal code</label>
-          <input type="text" class="form-control" id="postal_code" aria-describedby="emailHelp" placeholder="Enter Postal code">
-    
-        </div>
-        <button id="submit" type="submit" class="btn btn-primary" >Submit</button>
+          <label for="exampleInputEmail1">Current Latitute</label>
+          <small type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Latitute"><span id="latitude"></small>
+          <label for="exampleInputEmail1">Current Longitude</label>
+          <small type="text" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Longitude"><span id="longitude"></small>
+          <!-- <small id="emailHelp" class="form-text text-muted">Check the AQI of your City.<span id="temperature"></span></small> -->
+         
           <small id="emailHelp" class="form-text text-muted">AQI: Air Quality Index<span id="temperature"></span></small>
           <small id="emailHelp" class="form-text text-muted">o3: Concentration of surface O3 (µg/m³)<span id="temperature"></span></small>
           <small id="emailHelp" class="form-text text-muted">so2: Concentration of surface SO2 (µg/m³)<span id="temperature"></span></small>
@@ -111,12 +117,15 @@
           <small id="emailHelp" class="form-text text-muted">pm25: Concentration of particulate matter <span id="temperature"></span></small>
           <small id="emailHelp" class="form-text text-muted">< 10 microns (µg/m³)<span id="temperature"></span></small>
         
+        </div>
+        
+     
+        <!-- <button id="submit" type="submit" class="btn btn-primary" >Submit</button> -->
+        
         <!-- <button type="submit" class="btn btn-primary">My Location</button> -->
    
     </div>
 <!-- </form> -->
-
-
 <div>
     <div class="ct-pageWrapper" id="ct-js-wrapper" style="text-align: center;">
         <section class="company-heading intro-type" id="parallax-one" >
@@ -186,7 +195,7 @@
                 <tr>
                     <th>AQI Colour</th>
                     <th>Levels of Concern</th>
-                    <th>Values of Index</th>
+                    <th>Values of Index</th> 
                     <th>Description of Air Quality</th>
                 </tr>
             </thead>
@@ -229,98 +238,77 @@
                 </tr>
             </tbody>
         </table>
+  <script  src="logs_forecast.js"></script>
 
-<script src="./postal_code_forecast.js"></script>
-<script>      
+</div>
+  <button id="submit">submit</button>
+  <script type="text/javascript">
+    window.onload = setupRefresh;
+    function setupRefresh()
+    {
+        setInterval("refreshBlock();",3000);
+    }
+    
+    function refreshBlock()
+    {
+       $('#block1').load("index_forecast.html");
+    }
+  </script>
+  <script>
+    let lat, lon,air,weather;
+   
 
-// var locations=[
-// ["Mumbai", 18.9667,72.8333],
-// ["Delhi", 28.7,77.2],
-// ["Jaipur",26.9167,	75.8667]
-// ];
-//  var map = L.map('map').setView([22.805, 82.0], 5);
-//         L.tileLayer('https://api.maptiler.com/maps/streets/256/{z}/{x}/{y}.png?key=II7uREndG4cP3ocP64ZH', {
-//             attribution: '<a href="https://www.maptiler.com/copyright/" target="_blank">&copy; MapTiler</a> <a href="https://www.openstreetmap.org/copyright" target="_blank">&copy; OpenStreetMap contributors</a>',
-//         }).addTo(map);
-
-// for (var i = 0; i < locations.length; i++) {
-//     marker =  L.marker([locations[i][1], locations[i][2]])
-//     .bindPopup(locations[i][0])
-// 	.addTo(map);
-//var marker = L.marker([18.9667,72.8333]).addTo(map);
-</script>
-<script >
-
-let postal_code, country,air,weather;
-    async function postal_code1(){
-      // lat = position.coords.latitude;
-      //   lon = position.coords.longitude;
-        postal_code = document.getElementById('postal_code').value;
-        // state=document.getElementById('state').value;
-        // country= document.getElementById('country').value;
+    if ('geolocation' in navigator) {
+      console.log('geolocation available');
+      navigator.geolocation.getCurrentPosition(async position => {
+        try{
+        lat = position.coords.latitude;
+        lon = position.coords.longitude;
+        document.getElementById('latitude').textContent = lat;
+        document.getElementById('longitude').textContent = lon;
         // const api_url=`https://api.weatherbit.io/v2.0/current/airquality?lat=${lat}&lon=${lon}&key=c39e8bc08f7f42769ff7af360eb0cfd7`;
-        const api_url = `weather2/${postal_code}`;
+        const api_url = `weather/${lat},${lon}`;
         const response = await fetch(api_url);
         const json = await response.json();
         console.log('sdfsd', json);
-        weather =json.weather;
-         //air = json.air_quality.results[0].measurements[0];
+        weather =json.weather.data.current.weather;
+         air = json.air_quality.data[0];
+        //  console.log('adi', json);
       // document.getElementById('summary').textContent = json.data[0].aqi;
-      document.getElementById('temperature').textContent = weather.data[0].aqi;
-      // document.getElementById('aq_parameter').textContent = air.parameter;
-      // document.getElementById('aq_value').textContent = air.value;
-      // document.getElementById('aq_unit').textContent = air.unit;
-      // document.getElementById('aq_date').textContent = air.lastUpdated;
-      console.log('amit');
-      const data={weather};
+      document.getElementById('temperature').textContent = weather.ts;
+      document.getElementById('aq_parameter').textContent = air.parameter;
+      document.getElementById('aq_value').textContent = air.value;
+      document.getElementById('aq_unit').textContent = air.unit;
+      document.getElementById('aq_date').textContent = air.lastUpdated;
+      
+      
+
+      // console.log(json);
+      
+      console.log(json);
+        }catch(error){
+           // console.error(error);
+          console.log('something went wrong');
+          air={value:-1};
+          document.getElementById('aq_value').textContent='NO DATA'
+        }
+        const data = { lat, lon,weather,air };
       const options = {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
-      };  
-      const db_response = await fetch('/api_postal_code_forecast', options);
+      };
+      const db_response = await fetch('/api_forecast', options);
       const db_json = await db_response.json();
-      getData();
-    };
-    
-    document.getElementById('submit').addEventListener('click',postal_code1);
-    // if ('geolocation' in navigator) {
-    //   // console.log('geolocation available');
-    //   navigator.geolocation.getCurrentPosition(async position => {
-    //     try{
-        
-    
- 
-
-    //   // console.log(json);
-      
-    //   console.log(json);
-    //     }catch(error){
-    //        // console.error(error);
-    //       console.log('something went wrong');
-    //       air={value:-1};
-    //       document.getElementById('aq_value').textContent='NO DATA'
-    //     }
-    //     const data = { lat, lon,weather,air };
-    //   const options = {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify(data)
-    //   };
-    //   const db_response = await fetch('/api', options);
-    //   const db_json = await db_response.json();
-    //   console.log(db_json);
-    //   });
-    // } else {
-    //   console.log('geolocation not available');
-    // }
-    
+      console.log(db_json);
+      });
+    } else {
+      console.log('geolocation not available');
+    }
   </script>
-<script>
+  <script>
     (function($) { "use strict";
     
         $(function() {
@@ -369,14 +357,8 @@ let postal_code, country,air,weather;
       })(jQuery);
   
   </script>   
-
- 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-
-
-
