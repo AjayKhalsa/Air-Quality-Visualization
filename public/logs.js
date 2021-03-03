@@ -69,34 +69,33 @@ var blackIcon = new L.Icon({
 });
 
 
-  
-  for (item of data) {
-    if (item.air.aqi >= 301)
+for (item of data) {
+    if (  item.air.aqi >= 301)
       iconcolor = blackIcon
-    else if (item.air.aqi >= 201 & item.air.aqi <= 300)
+    else if (  item.air.aqi >= 201 &   item.air.aqi <= 300)
       iconcolor = violetIcon;
-    else if (item.air.aqi >= 151 & item.air.aqi <= 200)
+    else if (  item.air.aqi >= 151 &   item.air.aqi <= 200)
       iconcolor = redIcon;
-    else if (item.air.aqi >= 101 & item.air.aqi <= 150)
+    else if (  item.air.aqi >= 101 &   item.air.aqi <= 150)
       iconcolor = orangeIcon;
-    else if (item.air.aqi >= 51 & item.air.aqi <= 100)
+    else if (  item.air.aqi >= 51 &   item.air.aqi <= 100)
       iconcolor = yellowIcon;
-    else if (item.air.aqi <= 50)
+    else if (  item.air.aqi <= 50)
           iconcolor = greenIcon;
 
-    // const marker = L.marker([item.lat, item.lon]).addTo(mymap);
-    const marker = L.marker([item.lat, item.lon], {icon:iconcolor}).addTo(mymap);
-    let txt = `LAT: &nbsp${item.lat}  <br>
-    LON: &nbsp${item.lon}  <br>
-    AQI: &nbsp${item.air.aqi}  <br>
-    O3:  &nbsp  ${item.air.o3} <br>
-    SO2:  &nbsp  ${item.air.so2} <br>
-    NO2:  &nbsp  ${item.air.no2} <br>
-    CO:  &nbsp  ${item.air.co} <br>
-    PM10:  &nbsp  ${item.air.pm10} <br>
-    PM25:  &nbsp  ${item.air.pm25} <br>`;
+    // const marker = L.marker([  lat,   lon]).addTo(mymap);
+    const marker = L.marker([  item.lat,   item.lon], {icon:iconcolor}).addTo(mymap);
+    let txt = `LAT: &nbsp${  item.lat}  <br>
+    LON: &nbsp${  item.lon}  <br>
+    AQI: &nbsp${  item.air.aqi}  <br>
+    O3:  &nbsp  ${  item.air.o3} <br>
+    SO2:  &nbsp  ${  item.air.so2} <br>
+    NO2:  &nbsp  ${  item.air.no2} <br>
+    CO:  &nbsp  ${  item.air.co} <br>
+    PM10:  &nbsp  ${  item.air.pm10} <br>
+    PM25:  &nbsp  ${  item.air.pm25} <br>`;
 
-    if (item.air.value < 0) {
+    if (  item.air.value < 0) {
       txt += '  No air quality reading.';
     } else {
       txt += `  `;

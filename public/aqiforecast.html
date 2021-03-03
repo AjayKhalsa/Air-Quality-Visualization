@@ -11,8 +11,10 @@
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin=""/>
         <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+        
        integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
        crossorigin=""></script>
+       <script src="https://kit.fontawesome.com/f0405aa146.js" crossorigin="anonymous"></script>
        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <style>
@@ -43,7 +45,7 @@
 							<span class="navbar-toggler-icon"></span>
 						</button>
 						
-						<<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<div class="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul class="navbar-nav ml-auto py-4 py-md-0">
 								<!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4 active">
 									<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Home</a>
@@ -104,19 +106,19 @@
           <label for="exampleInputEmail1">Enter your city</label>
           <input type="text" class="form-control" id="city" aria-describedby="emailHelp" placeholder="Enter city">
           <label for="exampleInputEmail1">Enter your State</label>
-          <input type="text" class="form-control" id="state" aria-describedby="emailHelp" placeholder="Enter city">
+          <input type="text" class="form-control" id="state" aria-describedby="emailHelp" placeholder="Enter state">
           <label for="exampleInputEmail1">Enter your Country</label>
-          <input type="text" class="form-control" id="country" aria-describedby="emailHelp" placeholder="Enter city">
+          <input type="text" class="form-control" id="country" aria-describedby="emailHelp" placeholder="Enter country">
         </div>
         <button id="submit" type="submit" class="btn btn-primary" >Submit</button>
           <small id="emailHelp" class="form-text text-muted">AQI: Air Quality Index<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">o3: Concentration of surface O3 (µg/m³)<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">so2: Concentration of surface SO2 (µg/m³)<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">no2: Concentration of surface NO2 (µg/m³)<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">co: Concentration of carbon monoxide (µg/m³)<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">pm25: Concentration of particulate matter <span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">O3: Concentration of surface O3 (µg/m³)<span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">SO2: Concentration of surface SO2 (µg/m³)<span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">NO2: Concentration of surface NO2 (µg/m³)<span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">CO: Concentration of carbon monoxide (µg/m³)<span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">PM25: Concentration of particulate matter <span id="temperature"></span></small>
           <small id="emailHelp" class="form-text text-muted">< 2.5 microns (µg/m³)<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">pm25: Concentration of particulate matter <span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">PM10: Concentration of particulate matter <span id="temperature"></span></small>
           <small id="emailHelp" class="form-text text-muted">< 10 microns (µg/m³)<span id="temperature"></span></small>
         
         <!-- <button type="submit" class="btn btn-primary">My Location</button> -->
@@ -272,7 +274,7 @@
         weather =json.weather ;
          //air = json.air_quality.results[0].measurements[0];
       // document.getElementById('summary').textContent = json.data[0].aqi;
-      document.getElementById('temperature').textContent = weather.data[0].aqi;
+      //document.getElementById('temperature').textContent = weather.data[0].aqi;
       // document.getElementById('aq_parameter').textContent = air.parameter;
       // document.getElementById('aq_value').textContent = air.value;
       // document.getElementById('aq_unit').textContent = air.unit;

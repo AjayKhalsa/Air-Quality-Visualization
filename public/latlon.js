@@ -67,39 +67,37 @@ var blackIcon = new L.Icon({
   //shadowSize: [41, 41]
 });
 
-  for (item of data) {
 
-    if (item.weather.data[0].aqi >= 301)
+    if ( weather.data[0].aqi >= 301)
       iconcolor = blackIcon
-    else if (item.weather.data[0].aqi >= 201 & item.weather.data[0].aqi <= 300)
+    else if ( weather.data[0].aqi >= 201 &  weather.data[0].aqi <= 300)
       iconcolor = violetIcon;
-    else if (item.weather.data[0].aqi >= 151 & item.weather.data[0].aqi <= 200)
+    else if ( weather.data[0].aqi >= 151 &  weather.data[0].aqi <= 200)
       iconcolor = redIcon;
-    else if (item.weather.data[0].aqi >= 101 & item.weather.data[0].aqi <= 150)
+    else if ( weather.data[0].aqi >= 101 &  weather.data[0].aqi <= 150)
       iconcolor = orangeIcon;
-    else if (item.weather.data[0].aqi >= 51 & item.weather.data[0].aqi <= 100)
+    else if ( weather.data[0].aqi >= 51 &  weather.data[0].aqi <= 100)
       iconcolor = yellowIcon;
-    else if (item.weather.data[0].aqi <= 50)
+    else if ( weather.data[0].aqi <= 50)
           iconcolor = greenIcon;
 
-          const marker = L.marker([item.weather.lat, item.weather.lon], {icon:iconcolor}).addTo(mymap);
-    let txt = `City: &nbsp  ${item.weather.city_name} <br>
-    AQI: &nbsp${item.weather.data[0].aqi}  <br>
-    O3:  &nbsp  ${item.weather.data[0].o3} <br>
-    SO2: &nbsp  ${item.weather.data[0].so2} <br>
-    NO2: &nbsp  ${item.weather.data[0].no2} <br>
-    CO:  &nbsp  ${item.weather.data[0].co} <br>
-    PM25:&nbsp  ${item.weather.data[0].pm25} <br>
-    PM10:&nbsp  ${item.weather.data[0].pm10} <br>`;
+          const marker = L.marker([ weather.lat,  weather.lon], {icon:iconcolor}).addTo(mymap);
+    let txt = `City: &nbsp  ${ weather.city_name} <br>
+    AQI: &nbsp${ weather.data[0].aqi}  <br>
+    O3:  &nbsp  ${ weather.data[0].o3} <br>
+    SO2: &nbsp  ${ weather.data[0].so2} <br>
+    NO2: &nbsp  ${ weather.data[0].no2} <br>
+    CO:  &nbsp  ${ weather.data[0].co} <br>
+    PM25:&nbsp  ${ weather.data[0].pm25} <br>
+    PM10:&nbsp  ${ weather.data[0].pm10} <br>`;
 
-    // if (item.air.value < 0) {
+    // if ( air.value < 0) {
     //   txt += 'No air quality reading.';
     // } else {
     //   txt += `The concentration of particulate matter 
-    // (${item.city}) is ${item.air.value} 
-    // ${item.air.unit} last read on ${item.air.lastUpdated}`;
+    // (${ city}) is ${ air.value} 
+    // ${ air.unit} last read on ${ air.lastUpdated}`;
     // }
     marker.bindPopup(txt);
-  }
   console.log(data);
 }

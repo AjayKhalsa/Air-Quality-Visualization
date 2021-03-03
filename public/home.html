@@ -108,19 +108,19 @@
           <label for="exampleInputEmail1">Enter your city</label>
           <input type="text" class="form-control" id="city" aria-describedby="emailHelp" placeholder="Enter city">
           <label for="exampleInputEmail1">Enter your State</label>
-          <input type="text" class="form-control" id="state" aria-describedby="emailHelp" placeholder="Enter city">
+          <input type="text" class="form-control" id="state" aria-describedby="emailHelp" placeholder="Enter state">
           <label for="exampleInputEmail1">Enter your Country</label>
-          <input type="text" class="form-control" id="country" aria-describedby="emailHelp" placeholder="Enter city">
+          <input type="text" class="form-control" id="country" aria-describedby="emailHelp" placeholder="Enter country">
         </div>
         <button id="submit" type="submit" class="btn btn-primary" >Submit</button>
           <small id="emailHelp" class="form-text text-muted">AQI: Air Quality Index<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">o3: Concentration of surface O3 (µg/m³)<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">so2: Concentration of surface SO2 (µg/m³)<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">no2: Concentration of surface NO2 (µg/m³)<span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">O3: Concentration of surface O3 (µg/m³)<span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">SO2: Concentration of surface SO2 (µg/m³)<span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">NO2: Concentration of surface NO2 (µg/m³)<span id="temperature"></span></small>
           <small id="emailHelp" class="form-text text-muted">co: Concentration of carbon monoxide (µg/m³)<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">pm25: Concentration of particulate matter <span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">PM25: Concentration of particulate matter <span id="temperature"></span></small>
           <small id="emailHelp" class="form-text text-muted">< 2.5 microns (µg/m³)<span id="temperature"></span></small>
-          <small id="emailHelp" class="form-text text-muted">pm25: Concentration of particulate matter <span id="temperature"></span></small>
+          <small id="emailHelp" class="form-text text-muted">PM10: Concentration of particulate matter <span id="temperature"></span></small>
           <small id="emailHelp" class="form-text text-muted">< 10 microns (µg/m³)<span id="temperature"></span></small>
           
           
@@ -308,7 +308,7 @@
         weather =json.weather ;
          //air = json.air_quality.results[0].measurements[0];
       // document.getElementById('summary').textContent = json.data[0].aqi;
-      document.getElementById('temperature').textContent = weather.data[0].aqi;
+      //document.getElementById('temperature').textContent = weather.data[0].aqi;
       // document.getElementById('aq_parameter').textContent = air.parameter;
       // document.getElementById('aq_value').textContent = air.value;
       // document.getElementById('aq_unit').textContent = air.unit;
