@@ -8,7 +8,9 @@ const tiles = L.tileLayer(tileUrl, { attribution });
 tiles.addTo(mymap);
 
 getData();
-
+function AutoRefresh( t ) {
+  setTimeout("location.reload(true);", t);
+}
 async function getData() {
   const response = await fetch('/api');
   const data = await response.json();

@@ -239,7 +239,20 @@
                 </tr>
             </tbody>
         </table>
-        
+        <script>
+
+    window.onload = setupRefresh;
+    function setupRefresh()
+    {
+        setInterval("refreshBlock();",3000);
+    }
+    
+    function refreshBlock()
+    {
+       $('#block1').load("index_forecast.html");
+    }
+  </script>
+
 <script src="./logs.js"></script>
 <script type="text/javascript">
     window.onload = setupRefresh;
@@ -317,7 +330,7 @@
        },
        body: JSON.stringify(data)
      };
-     const db_response = await fetch('/api_forecast', options);
+     const db_response = await fetch('/api', options);
      const db_json = await db_response.json();
      console.log(db_json);
      });
