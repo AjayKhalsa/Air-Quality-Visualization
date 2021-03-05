@@ -87,15 +87,15 @@ async function getData() {
     else if ( item.air.aqi <= 50)
           iconcolor = greenIcon;
           const marker = L.marker([ item.lat,  item.lon], {icon:iconcolor}).addTo(mymap);
-    let txt = `LAT: &nbsp${ item.lat}  <br>
-    LON: &nbsp${ item.lon}  <br>
-    AQI: &nbsp${ item.air.aqi}  <br>
-    O3:  &nbsp  ${ item.air.o3} <br>
-    SO2:  &nbsp  ${ item.air.so2} <br>
-    NO2:  &nbsp  ${ item.air.no2} <br>
-    CO:  &nbsp  ${ item.air.co} <br>
-    PM10:  &nbsp  ${ item.air.pm10} <br>
-    PM25:  &nbsp  ${ item.air.pm25} <br>`;
+          let txt = `LAT &nbsp &nbsp : &nbsp  &nbsp&nbsp${  item.lat}  <br>
+          LON &nbsp &nbsp: &nbsp &nbsp${  item.lon}  <br>
+          AQI &nbsp &nbsp : &nbsp &nbsp &nbsp${  item.air.aqi}  <br>
+          O3 &nbsp &nbsp  &nbsp:  &nbsp &nbsp &nbsp  ${  item.air.o3} <br>
+          SO2 &nbsp  &nbsp:  &nbsp &nbsp  ${  item.air.so2} <br>
+          NO2 &nbsp &nbsp:  &nbsp &nbsp ${  item.air.no2} <br>
+          CO &nbsp &nbsp &nbsp:  &nbsp &nbsp &nbsp  ${  item.air.co} <br>
+          PM10 &nbsp:  &nbsp  ${  item.air.pm10} <br>
+          PM25 &nbsp:  &nbsp  ${  item.air.pm25} <br>`;
 
     if ( item.air.value < 0) {
       txt += '  No air quality reading.';

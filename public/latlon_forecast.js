@@ -82,14 +82,14 @@ var blackIcon = new L.Icon({
           iconcolor = greenIcon;
 
     const marker = L.marker([ weather.lat,  weather.lon], {icon:iconcolor}).addTo(mymap);
-    let txt = `City: &nbsp  ${ weather.city_name} <br>
-    AQI: &nbsp${ weather.data[0].aqi}  <br>
-    O3:  &nbsp  ${ weather.data[0].o3} <br>
-    SO2: &nbsp  ${ weather.data[0].so2} <br>
-    NO2: &nbsp  ${ weather.data[0].no2} <br>
-    CO:  &nbsp  ${ weather.data[0].co} <br>
-    PM25:&nbsp  ${ weather.data[0].pm25} <br>
-    PM10:&nbsp  ${ weather.data[0].pm10} <br>`;
+    let txt = ` City&nbsp&nbsp&nbsp: &nbsp${weather.city_name} <br>
+    AQI&nbsp&nbsp&nbsp: &nbsp${weather.data[0].aqi}  <br>
+      O3&nbsp&nbsp&nbsp&nbsp:     &nbsp&nbsp${weather.data[0].o3} <br>
+    SO2&nbsp&nbsp: &nbsp${weather.data[0].so2} <br>
+    NO2&nbsp&nbsp: &nbsp${weather.data[0].no2} <br>
+    CO&nbsp&nbsp&nbsp&nbsp: &nbsp${weather.data[0].co} <br>
+    PM25:&nbsp&nbsp${weather.data[0].pm25} <br>
+    PM10:&nbsp&nbsp${weather.data[0].pm10} <br>`;
 
     // if ( air.value < 0) {
     //   txt += 'No air quality reading.';
