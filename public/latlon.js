@@ -80,7 +80,7 @@ var blackIcon = new L.Icon({
       iconcolor = yellowIcon;
     else if ( weather.data[0].aqi <= 50)
           iconcolor = greenIcon;
-
+          const marker = L.marker([ weather.lat,  weather.lon], {icon:iconcolor}).addTo(mymap);
           let txt = ` City&nbsp&nbsp&nbsp: &nbsp${weather.city_name} <br>
           AQI&nbsp&nbsp&nbsp: &nbsp${weather.data[0].aqi}  <br>
             O3&nbsp&nbsp&nbsp&nbsp:     &nbsp&nbsp${weather.data[0].o3} <br>
